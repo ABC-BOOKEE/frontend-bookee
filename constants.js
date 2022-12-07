@@ -1,6 +1,6 @@
 export const contractAddress ="0x5FbDB2315678afecb367f032d93F642f64180aa3"
 export const contractAddressnft ="0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
-export const abinft =  [
+export const abinft =    [
   {
     "inputs": [],
     "stateMutability": "nonpayable",
@@ -178,7 +178,7 @@ export const abinft =  [
     "inputs": [
       {
         "internalType": "string",
-        "name": "token",
+        "name": "tokenUri",
         "type": "string"
       }
     ],
@@ -374,75 +374,13 @@ export const abi = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
-        "name": "tokenId",
+        "name": "_feePercent",
         "type": "uint256"
       }
     ],
-    "name": "AlreadyListed",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NoProceeds",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NotApprovedForMarketplace",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "NotListed",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "NotOwner",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "PriceMustBeAboveZero",
-    "type": "error"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      }
-    ],
-    "name": "PriceNotMet",
-    "type": "error"
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
     "anonymous": false,
@@ -455,7 +393,7 @@ export const abi = [
       },
       {
         "indexed": true,
-        "internalType": "address",
+        "internalType": "contract IERC721",
         "name": "nftAddress",
         "type": "address"
       },
@@ -472,109 +410,14 @@ export const abi = [
         "type": "uint256"
       }
     ],
-    "name": "ItemBought",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "seller",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "ItemCanceled",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "seller",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      }
-    ],
-    "name": "ItemListed",
+    "name": "bookBought",
     "type": "event"
   },
   {
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "bookArray",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "cidValue",
-        "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "docName",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
+        "name": "bookId",
         "type": "uint256"
       }
     ],
@@ -586,49 +429,60 @@ export const abi = [
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
         "internalType": "uint256",
-        "name": "tokenId",
+        "name": "bookId",
         "type": "uint256"
       }
     ],
-    "name": "cancelListing",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "calcTotalPrice",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "getListing",
+    "name": "getBooks",
     "outputs": [
       {
         "components": [
           {
-            "internalType": "string",
-            "name": "cidValue",
-            "type": "string"
+            "internalType": "uint256",
+            "name": "bookId",
+            "type": "uint256"
           },
           {
-            "internalType": "address",
-            "name": "sender",
+            "internalType": "contract IERC721",
+            "name": "nft",
             "type": "address"
-          },
-          {
-            "internalType": "string",
-            "name": "docName",
-            "type": "string"
           },
           {
             "internalType": "uint256",
             "name": "price",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address payable",
+            "name": "seller",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "sold",
+            "type": "bool"
           }
         ],
-        "internalType": "struct bookNft.Book[]",
+        "internalType": "struct bookNft.book[]",
         "name": "",
         "type": "tuple[]"
       }
@@ -637,14 +491,8 @@ export const abi = [
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "seller",
-        "type": "address"
-      }
-    ],
-    "name": "getProceeds",
+    "inputs": [],
+    "name": "i_percent",
     "outputs": [
       {
         "internalType": "uint256",
@@ -658,14 +506,14 @@ export const abi = [
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "_cidValue",
-        "type": "string"
+        "internalType": "contract IERC721",
+        "name": "nftAddress",
+        "type": "address"
       },
       {
-        "internalType": "string",
-        "name": "_docName",
-        "type": "string"
+        "internalType": "uint256",
+        "name": "_bookId",
+        "type": "uint256"
       },
       {
         "internalType": "uint256",
@@ -673,62 +521,15 @@ export const abi = [
         "type": "uint256"
       }
     ],
-    "name": "list",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
+    "name": "listBook",
+    "outputs": [
       {
         "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "price",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "listItem",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "nftAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "newPrice",
-        "type": "uint256"
-      }
-    ],
-    "name": "updateListing",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdrawProceeds",
-    "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
   }
-] 
+]

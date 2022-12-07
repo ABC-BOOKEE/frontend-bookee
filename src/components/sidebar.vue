@@ -65,17 +65,23 @@
 
 							<span class="" @click="connectWallet">Connect</span></v-btn
 						>
+
+	 
 		</v-toolbar>
 	</nav>
 </template>
 <script>
  	import emitter from "tiny-emitter/instance";
+	// import { ConnectButton } from "web3uikit";
 	import { create } from "ipfs-client";
 	import { ethers, Signer } from "ethers";
 	import { abi, contractAddress } from "../../constants";
 
 export default {
     name:"navBar",
+	components: {
+	 
+  },
     	data() {
 			return {
 				dialog: false,
