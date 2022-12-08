@@ -104,7 +104,7 @@
 
     <v-row>
       <v-hover>
-        <v-col v-for="doc in documents" :key="doc.time" cols="2" sm="2" md="2">
+        <v-col v-for="doc in documents" :key="doc.time" cols="2" sm="8" md="2">
           <v-card
         
             class="col-card h-100"
@@ -115,12 +115,7 @@
               class="pt-2 mt-5 px-3 mx-3"
             ></v-img
             ><br />
-            <!-- <div class="ps-3 ms-3">
-							<span class="fol-text">path: {{doc.docValue}}</span>
-						</div> -->
-            <!-- <div class="ps-3 ms-3">
-							<h6 class="fol-text"><span>uploaded (day)</span>{{new Date(parseInt(doc.time)).toLocaleDateString()}}</h6>
-						</div> -->
+          
             <div class="ps-3 ms-3">
               <h6 class="folder-texti">
                 <span class="folder-texti">{{ doc.docName }}</span
@@ -145,7 +140,7 @@
       </v-hover>
 
       <v-hover>
-        <v-col v-for="doc in documents" :key="doc.time" cols="2" sm="2" md="2">
+        <v-col v-for="doc in documents" :key="doc.time" cols="2" sm="8" md="2">
           <v-card class="col-card h-100">
             <v-img src="../assets/c2.webp" class="pt-2 mt-5 px-3 mx-3"></v-img
             ><br />
@@ -154,7 +149,7 @@
               <h6 class="folder-texti">
                 <span class="folder-texti">{{ doc.docName }}</span
                 ><br />
-                <span class="pe-1">Price:</span>{{ doc.price }} ETH
+                <span class="pe-1">Price:</span>{{ doc.price}} ETH
               </h6>
             </div>
             <div style="display: flex; justify-content: space-between">
@@ -227,14 +222,7 @@ export default {
       window.open(baseUrlr + cid);
     },
 
-    async userLogin() {
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = await provider.getSigner();
-      const contract = new ethers.Contract(contractAddress, abi, signer);
-      const user = await contract.operatorFinder(signer.getAddress());
-      console.log(user);
-      return user;
-    },
+    
     async onChanges(e) {
       this.file = e.target.files;
       console.log(this.file);
@@ -299,7 +287,8 @@ let tokenCid = await client.put(files)
 	await ( await contract.buyItem(bookId,
 
 	{
-  gasLimit: 100000,
+    value:this.price,
+  gasLimit: 1000000,
   nonce: undefined,
 	}
 	
