@@ -20,14 +20,13 @@ yarn build
 ```
 yarn lint
 ```
-
 ### Requirements 
 `` 
 Have the wallet 
 ``
+
 ``
 connect to goerl network
-
 ``
 
 # ABOUT THE PROJECT
@@ -61,4 +60,8 @@ Bookee provide authors with the chance to
 collect revenue on the selling and reselling
 of the copies after being.
  ```
+ ## SCREENSHORTS
+ 
+ <img src="src/assets/Screenshot from 2022-12-07 18-27-50.png" width="800"/>
+ <img src="src/assets/Screenshot from 2022-12-07 18-26-07.png" width="800"/>
 
