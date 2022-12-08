@@ -120,7 +120,7 @@
               <h6 class="folder-texti">
                 <span class="folder-texti">{{ doc.docName }}</span
                 ><br />
-                <span class="pe-1">Price:</span>{{ doc.price }} ETH
+                <span class="pe-1">Price:</span>{{Math.round(parseFloat(doc.price) * (10 ** 18)) }} ETH
               </h6>
             </div>
             <div style="display: flex; justify-content: space-between">
@@ -149,7 +149,7 @@
               <h6 class="folder-texti">
                 <span class="folder-texti">{{ doc.docName }}</span
                 ><br />
-                <span class="pe-1">Price:</span>{{ doc.price}} ETH
+                <span class="pe-1">Price:</span>{{ Math.round(parseFloat(doc.price.toString()) * (10 ** 18)) }} ETH
               </h6>
             </div>
             <div style="display: flex; justify-content: space-between">
@@ -233,7 +233,7 @@ export default {
       e.preventDefault();
       const docName = this.file[0].name;
       console.log(docName);
-      const price = ethers.utils.parseEther(this.price.toString())
+      const price = ethers.utils.parseEther(this.price)
  
 
       const cid = await client.put(this.file);
@@ -276,8 +276,9 @@ let tokenCid = await client.put(files)
       const signer = provider.getSigner();
       const contract = new ethers.Contract(contractAddress, abi, signer);
       const document = await contract.getBooks();
+      
 
-      return document;
+      return  document;
     },
 
 	async buyItem (bookId){
